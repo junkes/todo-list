@@ -1,0 +1,22 @@
+GET http://localhost:3000/tasks
+
+
+POST http://localhost:3000/tasks
+content-type: application/json
+
+{
+  "title": "teste",
+  "description": "xxxxx"
+}
+
+
+PUT http://localhost:3000/tasks/10
+content-type: application/json
+
+{
+    "title": "primeira tarefa editada",
+    "description": "Isso é um teste de tarefa gravada no banco editado"
+}
+
+
+DELETE http://localhost:3000/tasks/9
