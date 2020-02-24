@@ -41,7 +41,7 @@
             </div>
           </q-card-section>
 
-          <q-card-section v-html="task.description.replace(/\n/, '<br>')" />
+          <q-card-section v-html="task.description.replace(/\n/gm, '<br>')" />
         </q-card>
         <q-card v-if="!this.tasks.length">
           <q-card-section class="text-h6 text-center text-grey-6">
