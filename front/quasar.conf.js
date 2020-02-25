@@ -63,7 +63,8 @@ module.exports = function (ctx) {
         'QMenu',
         'QDialog',
         'QSeparator',
-        'QInput'
+        'QInput',
+        'QScrollArea'
       ],
 
       directives: [

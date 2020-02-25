@@ -11,7 +11,7 @@
                 Tarefas
               </div>
               <div class="col text-right">
-                <q-btn @click="dialogTarefa()" size="lg" dense flat round icon="add" />
+                <q-btn @click="dialogTarefa()" size="lg" dense flat round icon="add"/>
               </div>
             </div>
           </q-card-section>
@@ -40,7 +40,6 @@
               </div>
             </div>
           </q-card-section>
-
           <q-card-section v-html="task.description.replace(/\n/gm, '<br>')" />
         </q-card>
         <q-card v-if="!this.tasks.length">
@@ -117,6 +116,7 @@ export default {
       })
     },
     getTasks () {
+      if (!location.href.includes('localhost')) this.backUrl = 'http://64.227.10.30/todolist-api/'
       axios.get(this.backUrl + 'tasks')
         .then(response => {
           if (response.status === 200 && response.data.tasks) {

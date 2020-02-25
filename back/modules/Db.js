@@ -6,7 +6,7 @@ class Db {
 
   async connection () {
     const conn = await this.mysql.createConnection({
-      host: 'todolist_mysql_1',
+      host: 'containers_mysql_1',
       database: 'todolist',
       user: 'root',
       password: 'junkes001'
