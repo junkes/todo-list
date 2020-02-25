@@ -1,0 +1,8 @@
+version: "3"
+services:
+  front-prod: # depois de rodar o front-prod copiar pasta dist/spa para a pasta apache2/htdocs e renomear para todolist
+    image: node:12.16-alpine
+    command: "npm run prod"
+    working_dir: "/home/quasar/app"
+    volumes:
+      - ./front:/home/quasar/app

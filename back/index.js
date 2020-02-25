@@ -13,6 +13,6 @@ const routes = new (require('./modules/Routes'))()
 
 routes.init(app, DB, redis)
 
-app.listen(3000, '0.0.0.0', () => {
-  console.log('API rodando na porta 3000!')
+app.listen(process.env.PORT, '0.0.0.0', () => {
+  console.log(`API rodando na porta ${process.env.PORT}!`)
 })

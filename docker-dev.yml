@@ -1,0 +1,36 @@
+version: "3"
+services:
+  api:
+    container_name: "todolist_api001"
+    environment:
+      - PORT=3000
+    image: node:12.16-alpine
+    command: "npm run dev"
+    restart: always
+    ports:
+      - "3000:3000"
+    working_dir: "/home/node/app"
+    volumes:
+      - ./back:/home/node/app
+    networks:
+      - net002
+
+  front-dev:
+    depends_on:
+      - api
+    container_name: "todolist_front_dev"
+    image: node:12.16-alpine
+    command: "npm run dev"
+    restart: always
+    ports:
+      - "8080:8080"
+    working_dir: "/home/quasar/app"
+    volumes:
+      - ./front:/home/quasar/app
+    networks:
+      - net002
+
+networks:
+  net002:
+    external:
+      name: containers_net001

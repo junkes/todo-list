@@ -6,7 +6,7 @@ class Routes {
     
     app.get('/tasks', (req, res) => {
       try {
-        let client = redis.createClient({host: 'containers_redis_1'})
+        let client = redis.createClient({host: 'redis'})
         client.get('tasks', async (err, tasks) => {
           if (err) console.error(err)
           if (tasks && tasks.trim().length) {
@@ -32,7 +32,7 @@ class Routes {
           throw 'Erro na validação dos dados!'
         }
         res.status(201).json(inserted)
-        let client = redis.createClient({host: 'containers_redis_1'})
+        let client = redis.createClient({host: 'redis'})
         client.set("tasks", '', (err, reply) => {
           if (err) console.error(err)
         })
@@ -49,7 +49,7 @@ class Routes {
           throw 'Erro na validação dos dados!'
         }
         res.status(200).json(updated)
-        let client = redis.createClient({host: 'containers_redis_1'})
+        let client = redis.createClient({host: 'redis'})
         client.set("tasks", '', (err, reply) => {
           if (err) console.error(err)
         })
@@ -63,7 +63,7 @@ class Routes {
       try {
         const deleted = await DB.deleteTask(req)
         res.status(204).json(deleted)
-        let client = redis.createClient({host: 'containers_redis_1'})
+        let client = redis.createClient({host: 'redis'})
         client.set("tasks", '', (err, reply) => {
           if (err) console.error(err)
         })

@@ -1,0 +1,21 @@
+version: "3"
+services:
+  api:
+    container_name: "todolist_api001" # alterar referência também no httpd.conf do apache
+    environment:
+      - PORT=3000
+    image: node:12.16-alpine
+    command: "npm run prod"
+    restart: always
+    ports:
+      - "3000:3000"
+    working_dir: "/home/node/app"
+    volumes:
+      - ./back:/home/node/app
+    networks:
+      - net002
+
+networks:
+  net002:
+    external:
+      name: containers_net001
