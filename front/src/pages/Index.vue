@@ -116,7 +116,7 @@ export default {
       })
     },
     getTasks () {
-      if (!location.href.includes('localhost')) this.backUrl = 'http://64.227.10.30/todolist-api/'
+      if (!location.href.includes('localhost')) this.backUrl = 'http://juliojunkes.ddns.net/todolist-api/'
       axios.get(this.backUrl + 'tasks')
         .then(response => {
           if (response.status === 200 && response.data.tasks) {
